@@ -58,7 +58,7 @@ module Florby
     end
 
     def content
-      @content ||= Commonmarker.to_html(@body, options: { extension: { tagfilter: false, autolink: true }, render: { unsafe: true } })
+      @content ||= Commonmarker.to_html(@body, options: { extension: { tagfilter: false, autolink: true, header_ids: "" }, render: { unsafe: true } })
     end
 
     def content=(html)

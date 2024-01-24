@@ -39,7 +39,8 @@ module Florby
       SitemapGenerator::Sitemap.compress = false
       SitemapGenerator::Sitemap.create do
         collection.all_pages.each do |page|
-          add page.permalink, lastmod: page.updated
+          paths = page.permalink.split('/').delete_if(&:empty?)
+          add "/#{paths.join('/')}/", lastmod: page.updated
         end
       end
     end
